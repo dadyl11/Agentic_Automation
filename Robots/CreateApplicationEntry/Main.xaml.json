@@ -1,0 +1,69 @@
+{
+  "DisplayName": "Main",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "strLocalFilePath",
+      "DisplayName": "strLocalFilePath",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "C:\\Users\\kmisk\\Documents\\Agentic Training\\CV 2 – Janusz Nowak_Nie_Pasuje.pdf",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "strUzasadnienie",
+      "DisplayName": "strUzasadnienie",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "Przykladowe uzasadnienie",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "strPozycja",
+      "DisplayName": "strPozycja",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "Przykladowa pozycja",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "strStatus",
+      "DisplayName": "strStatus",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "Status",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "strDecyzja",
+      "DisplayName": "strDecyzja",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "Decyzja",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}
