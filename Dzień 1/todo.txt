@@ -1,0 +1,14 @@
+variables Scope,
+default values,
+description,
+Read range sprawdzic jaka tam byla roznica od excel scope.
+Powysylac te excele. 
+Chrome profile/Edge
+
+========================
+Dodatki:
+Data Table Scrape z kilku stron,
+Check App State pokazac i spradzic.
+AI ogolnie jak uzywac.
+Immidiete panel,
+ogo,nie debugowanie takie z doswiadczenia.
