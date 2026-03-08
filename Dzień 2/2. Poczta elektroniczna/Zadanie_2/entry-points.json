@@ -1,0 +1,66 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "a540ea03-2d4f-4f34-bc1e-0b6fd8813102",
+      "type": "process"
+    },
+    {
+      "filePath": "Send_SMTP_Notification.xaml",
+      "uniqueId": "543f531d-7a56-4cf0-88ed-42fece37faf7",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "in_int_SMTP_Port": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 2147483647
+          },
+          "in_str_SMTP_Server": {
+            "type": "string"
+          },
+          "in_str_HTML_Body": {
+            "type": "string"
+          },
+          "in_str_Receiver_Email": {
+            "type": "string"
+          },
+          "in_str_CC_Receiver_Email": {
+            "type": "string"
+          },
+          "in_str_Email_Subject": {
+            "type": "string"
+          },
+          "in_str_Attachment_Path": {
+            "type": "string"
+          },
+          "in_str_SMTP_Login_Password": {
+            "type": "object",
+            "properties": {
+              "Length": {
+                "type": "integer",
+                "minimum": -2147483648,
+                "maximum": 2147483647,
+                "readOnly": true
+              }
+            }
+          },
+          "in_str_SMTP_Login_Email": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "out_str_Notification": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}

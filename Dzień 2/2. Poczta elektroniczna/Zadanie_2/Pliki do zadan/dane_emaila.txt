@@ -1,0 +1,17 @@
+Outgoing Mail (SMTP) Server
+smtp.gmail.com
+Port for SSL: 465
+
+Incoming Mail (IMAP) Server
+imap.gmail.com
+Requires SSL: Yes
+Port: 993
+
+mail:
+zadaniemail123@gmail.com
+
+haslo do activity:
+hztprofisesgaoda1928!
+
+haslo do aplikacji:
+yvot ieee fdlt pkuh
