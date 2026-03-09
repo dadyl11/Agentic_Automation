@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zadania praktyczne — Szkolenie UiPath</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #222;
+      background: #e8f1fb;
+      padding: 20px;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px 50px;
+      box-shadow: 0 2px 12px rgba(30,77,140,0.13);
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      border-bottom: 3px solid #5b9bd5;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+
+    .header img {
+      height: 70px;
+      width: auto;
+      flex-shrink: 0;
+    }
+
+    .header-text {
+      flex: 1;
+    }
+
+    .header-text h1 {
+      font-size: 22px;
+      color: #1e4d8c;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      margin-bottom: 3px;
+    }
+
+    .header-text .subtitle {
+      font-size: 13px;
+      color: #5b9bd5;
+      font-weight: 600;
+    }
+
+    .header-text .subtitle-small {
+      font-size: 12px;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    /* Day headers */
+    .day-header {
+      background: #1e4d8c;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 10px 18px;
+      margin: 30px 0 20px 0;
+      border-radius: 4px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* Module headers */
+    .module-header {
+      background: #eaf3fb;
+      color: #1e4d8c;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 16px;
+      margin: 24px 0 14px 0;
+      border-left: 4px solid #5b9bd5;
+      border-radius: 0 3px 3px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Task card */
+    .task-card {
+      border: 1px solid #cde0f5;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .task-card.intro {
+      border-color: #b3d1f0;
+    }
+
+    .task-title {
+      background: #5b9bd5;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 9px 16px;
+    }
+
+    .task-card.intro .task-title {
+      background: #3a7abf;
+    }
+
+    .task-topic {
+      background: #f0f7ff;
+      font-size: 12px;
+      color: #2a6096;
+      padding: 5px 16px;
+      border-bottom: 1px solid #cde0f5;
+      font-style: italic;
+    }
+
+    .task-card.intro .task-topic {
+      background: #e4f0fb;
+      color: #1e4d8c;
+      border-bottom-color: #b3d1f0;
+    }
+
+    .task-body {
+      padding: 14px 16px;
+    }
+
+    .task-body h4 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #1e4d8c;
+      margin: 12px 0 6px 0;
+      letter-spacing: 0.6px;
+    }
+
+    .task-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .task-body ol, .task-body ul {
+      padding-left: 20px;
+    }
+
+    .task-body ol li, .task-body ul li {
+      margin-bottom: 4px;
+    }
+
+    code {
+      background: #eaf3fb;
+      color: #1e4d8c;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 12px;
+      border: 1px solid #cde0f5;
+    }
+
+    pre {
+      background: #f4f9ff;
+      border: 1px solid #cde0f5;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 12px;
+      margin: 8px 0;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+      color: #1e4d8c;
+    }
+
+    .hint-box {
+      background: #e8f4fd;
+      border-left: 3px solid #5b9bd5;
+      padding: 8px 12px;
+      margin: 8px 0;
+      font-size: 13px;
+      border-radius: 0 3px 3px 0;
+      color: #1e4d8c;
+    }
+
+    .bonus-tag {
+      display: inline-block;
+      background: #3a7abf;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 3px;
+      margin-right: 4px;
+      vertical-align: middle;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 13px;
+      margin: 8px 0;
+    }
+
+    table th {
+      background: #eaf3fb;
+      font-weight: 700;
+      padding: 6px 10px;
+      border: 1px solid #cde0f5;
+      text-align: left;
+      color: #1e4d8c;
+    }
+
+    table td {
+      padding: 5px 10px;
+      border: 1px solid #cde0f5;
+    }
+
+    strong {
+      color: #1e4d8c;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+      border-top: 2px solid #eaf3fb;
+      margin-top: 36px;
+      padding-top: 16px;
+    }
+
+    .footer strong {
+      color: #1e4d8c;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+        font-size: 12px;
+      }
+
+      .page {
+        box-shadow: none;
+        padding: 20px 30px;
+        max-width: 100%;
+      }
+
+      .task-card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .day-header {
+        page-break-before: always;
+      }
+
+      .day-header:first-of-type {
+        page-break-before: avoid;
+      }
+
+      code {
+        border: none;
+        background: #f0f0f0;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <img src="logo.png" alt="Robotivity logo">
+    <div class="header-text">
+      <h1>Zadania praktyczne — Szkolenie UiPath</h1>
+      <div class="subtitle">Autoryzowany Partner UiPath</div>
+      <div class="subtitle-small">info@robotivity.pl &nbsp;·&nbsp; www.Robotivity.pl &nbsp;·&nbsp; tel.: +48 690 020 576</div>
+    </div>
+  </div>
+
+  <!-- ==================== DZIEŃ 1 ==================== -->
+  <div class="day-header">Dzień 1</div>
+
+  <div class="module-header">Moduł 1 — Podstawy automatyzacji</div>
+
+  <!-- Zadanie 1 -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 1 — Imię jednorożca</div>
+    <div class="task-topic">Temat: Automatyzacja przeglądarki + pobieranie danych od użytkownika</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Pobierz od użytkownika <strong>imię</strong> oraz <strong>miesiąc urodzenia</strong> (lista: January; February; March; April; May; June; July; August; September; October; November; December)</li>
+        <li>Wejdź na stronę: <code>https://www.rpasamples.com/findunicornname</code></li>
+        <li>Wpisz pobrane imię i wybierz pobrany miesiąc</li>
+        <li>Wyświetl wygenerowane imię jednorożca w Message Box</li>
+      </ol>
+      <h4>Wskazówki</h4>
+      <ul>
+        <li>Do pobierania danych od użytkownika z listą wyboru użyj aktywności <code>Input Dialog</code> z opcją <code>OptionsString</code></li>
+        <li>Do otwierania przeglądarki użyj <code>Open Browser</code> lub <code>Use Application/Browser</code></li>
+        <li>Do wyboru miesiąca z listy rozwijanej użyj <code>Select Item</code></li>
+        <li>Do pobrania wygenerowanego wyniku ze strony użyj <code>Get Text</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Zadanie 2 -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 2 — Kalkulator (dynamiczne selektory)</div>
+    <div class="task-topic">Temat: Automatyzacja aplikacji desktopowej + dynamiczne selektory</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Pobierz od użytkownika <strong>dwie liczby</strong> z przedziału 1–9</li>
+        <li>Wykonaj <strong>dodawanie</strong> tych liczb w aplikacji Kalkulator (Windows)</li>
+        <li>Pobierz wynik wyświetlony w kalkulatorze</li>
+        <li>Wyświetl wynik w Message Box</li>
+      </ol>
+      <h4>Wskazówki</h4>
+      <ul>
+        <li>Użyj <code>Input Dialog</code> dwukrotnie (dla każdej liczby)</li>
+        <li>Otwórz Kalkulator przez <code>Open Application</code> lub <code>Use Application/Browser</code></li>
+        <li>Klikanie cyfr wykonaj przez aktywność <code>Click</code> — spróbuj użyć <strong>dynamicznego selektora</strong> (zamiast tworzyć osobny Click dla każdej cyfry, sparametryzuj selektor zmienną)</li>
+        <li>Do pobrania wyniku użyj <code>Get Text</code></li>
+      </ul>
+      <div class="hint-box">
+        <strong>Klucz do zadania:</strong> Dynamiczny selektor to selektor zawierający zmienną, np.:<br>
+        <code>[string.Format("&lt;uia automationid='num{0}Button'/&gt;", str_liczba1)]</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zadanie 3 -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 3 — Dni tygodnia</div>
+    <div class="task-topic">Temat: Praca z plikiem tekstowym + tablica + pętla + warunek</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Przeczytaj tekst z pliku <code>Tydzien.txt</code></li>
+        <li>Podziel pobrany tekst na poszczególne dni tygodnia</li>
+        <li>Wypisz każdy dzień (używając <code>Log Message</code>) w pętli</li>
+        <li>Jeżeli dniem tygodnia będzie <strong>"Piątek"</strong> — wyświetl dodatkowo Message Box: <code>"Już jutro będzie weekend!"</code></li>
+        <li><span class="bonus-tag">Bonus</span> Sprawdź w Google, jaka będzie pogoda w poszczególne dni</li>
+      </ol>
+      <h4>Wskazówki</h4>
+      <ul>
+        <li>Użyj <code>Read Text File</code> do odczytu pliku</li>
+        <li>Do podziału tekstu użyj metody <code>.Split(";")</code> na zmiennej typu String — wynik to tablica <code>String[]</code></li>
+        <li>Do iteracji po tablicy użyj <code>For Each</code> (typ elementu: <code>String</code>)</li>
+        <li>Warunek sprawdzaj przez aktywność <code>If</code></li>
+      </ul>
+      <h4>Zawartość pliku Tydzien.txt</h4>
+      <pre>Poniedzialek;Wtorek;Sroda;Czwartek;Piatek;Sobota;Niedziela</pre>
+    </div>
+  </div>
+
+  <!-- Zadanie 4 -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 4 — Kalkulator w Flowchart</div>
+    <div class="task-topic">Temat: Flowchart + FlowSwitch + FlowDecision</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Korzystając z <strong>Flowcharta</strong>, stwórz prosty kalkulator</li>
+        <li>Pobierz od użytkownika <strong>2 liczby całkowite</strong> i wybrane <strong>działanie matematyczne</strong> (dodawanie; odejmowanie; mnozenie; dzielenie)</li>
+        <li>Wykonaj obliczenia i wyświetl wynik w Message Box</li>
+        <li>Jeśli wynik jest <strong>większy od 10</strong> — wyświetl dodatkowy Message Box z taką informacją</li>
+      </ol>
+      <h4>Wskazówki</h4>
+      <ul>
+        <li>Utwórz nowy projekt jako <strong>Flowchart</strong> (nie Sequence)</li>
+        <li>Użyj <code>FlowSwitch</code> do rozgałęzienia na 4 działania matematyczne</li>
+        <li>Użyj <code>FlowDecision</code> do sprawdzenia warunku <code>wynik &gt; 10</code></li>
+        <li>Przy dzieleniu użyj zmiennej typu <code>Double</code> i konwersji <code>cdbl()</code>, aby wynik mógł być niecałkowity</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Moduł 2 -->
+  <div class="module-header">Moduł 2 — Excel i Data Table</div>
+
+  <!-- DT intro -->
+  <div class="task-card intro">
+    <div class="task-title">Ćwiczenie wprowadzające — Data Table</div>
+    <div class="task-topic">Temat: Podstawowe operacje na DataTable (wspólnie z prowadzącym)</div>
+    <div class="task-body">
+      <h4>Opis ćwiczenia</h4>
+      <ol>
+        <li>Utwórz DataTable z kolumnami: <code>Imie</code>, <code>Nazwisko</code>, <code>Wiek</code> i dodaj kilka wierszy</li>
+        <li>Dodaj nową kolumnę do istniejącej tabeli</li>
+        <li>Iteruj po wierszach pętlą <code>For Each Row</code> i loguj dane</li>
+        <li>Usuń dodaną kolumnę</li>
+        <li>Posortuj tabelę według kolumny <code>Nazwisko</code></li>
+        <li>Przefiltruj — zostaw tylko wiersze gdzie <code>Wiek &gt; 20</code></li>
+        <li>Zapisz wynikową tabelę do pliku Excel</li>
+      </ol>
+      <h4>Kluczowe aktywności</h4>
+      <p><code>Build Data Table</code> &nbsp;·&nbsp; <code>Add Data Column</code> &nbsp;·&nbsp; <code>Add Data Row</code> &nbsp;·&nbsp; <code>For Each Row</code> &nbsp;·&nbsp; <code>Remove Data Column</code> &nbsp;·&nbsp; <code>Sort Data Table</code> &nbsp;·&nbsp; <code>Filter Data Table</code> &nbsp;·&nbsp; <code>Write Range</code></p>
+    </div>
+  </div>
+
+  <!-- Excel intro -->
+  <div class="task-card intro">
+    <div class="task-title">Ćwiczenie wprowadzające — Excel</div>
+    <div class="task-topic">Temat: Read Range + dynamiczna nazwa pliku (wspólnie z prowadzącym)</div>
+    <div class="task-body">
+      <h4>Opis ćwiczenia</h4>
+      <ol>
+        <li>Wczytaj plik Excel (<code>Read Range Workbook</code>) do zmiennej DataTable</li>
+        <li>Pobierz aktualną datę i sformatuj ją do postaci <code>dd-MM-yyyy</code></li>
+        <li>Zapisz wczytaną tabelę do nowego pliku o nazwie <code>"Nowy plik-[data].xlsx"</code></li>
+      </ol>
+      <div class="hint-box">
+        <strong>Wskazówka:</strong> Do formatowania daty użyj wyrażenia <code>Now.ToString("dd-MM-yyyy")</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zadanie 1 Excel -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 1 Excel — Raport przychodów</div>
+    <div class="task-topic">Temat: Filtrowanie + obliczenia + zapis raportu</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Przefiltruj plik <code>Produkty.xlsx</code> — zostaw tylko rekordy, gdzie <strong>ilość jest większa niż 5</strong></li>
+        <li>Usuń kolumnę <code>"Koszt produkcji/szt"</code></li>
+        <li>Dodaj kolumnę <code>"Przychody ze sprzedazy"</code> i oblicz przychód (<code>Ilość * Cena</code>) dla każdego produktu</li>
+        <li>Raport zapisz do pliku <code>Produkty_Przychody.xlsx</code></li>
+      </ol>
+      <h4>Wskazówki</h4>
+      <ul>
+        <li>Użyj <code>Filter Data Table</code> z dwoma operacjami jednocześnie: filtrowanie wierszy + usunięcie kolumny</li>
+        <li>Obliczenia wykonaj w pętli <code>For Each Row</code></li>
+        <li>Dane z Excela są typem <code>Object</code> — przed mnożeniem użyj konwersji <code>cint()</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Zadanie 2 Excel -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 2 Excel — Kursy walut NBP</div>
+    <div class="task-topic">Temat: Automatyzacja przeglądarki + data scraping + dynamiczny zapis</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Wejdź na stronę <code>https://nbp.pl/statystyka-i-sprawozdawczosc/kursy/tabela-a/</code> i pobierz <strong>datę odświeżenia kursów walut</strong></li>
+        <li>Pobierz całą <strong>tabelę A</strong> kursów walut ze strony</li>
+        <li>Wyświetl (w logu) <strong>kurs Euro</strong></li>
+        <li>Zapisz pobraną tabelę A do pliku <code>"Kursy-tabela-A-[data odświeżenia].xlsx"</code></li>
+      </ol>
+      <h4>Wskazówki</h4>
+      <ul>
+        <li>Do pobrania daty z tekstu strony użyj <code>Get Text</code>, a następnie <code>.Split(" ").Last</code> — wyciągnie ostatni wyraz (datę)</li>
+        <li>Do pobrania tabeli ze strony użyj <code>Extract Table Data</code></li>
+        <li>Kurs Euro wyciągnij przez <code>Filter Data Table</code> (filtruj po nazwie waluty = "euro"), a następnie odczytaj wartość przez <code>dt_euro.Rows(0).Item(2)</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== DZIEŃ 2 ==================== -->
+  <div class="day-header">Dzień 2</div>
+
+  <div class="module-header">Moduł 3 — Poczta elektroniczna</div>
+
+  <!-- Email Zadanie 1 -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 1 — Wysyłka maila z załącznikiem</div>
+    <div class="task-topic">Temat: SMTP — wysyłanie emaila z załącznikiem</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Wyślij email z adresu <code>zadaniemail123@gmail.com</code> z załączonym plikiem <code>Produkty.xlsx</code> na adres <code>info@robotivity.pl</code></li>
+        <li>Treść maila:
+          <pre>Cześć
+W załączniku raport: Produkty.xlsx z dnia [aktualna data]
+Pozdrawiam</pre>
+        </li>
+      </ol>
+      <h4>Wskazówki</h4>
+      <ul>
+        <li>Użyj aktywności <code>Send SMTP Mail Message</code></li>
+        <li>Serwer: <code>smtp.gmail.com</code>, Port: <code>465</code>, SSL: <code>True</code></li>
+        <li>Hasło pobierz przez <code>Get Credential</code> (nie wpisuj go jako tekstu w workflow!)</li>
+        <li>Ścieżkę do pliku zbuduj przez <code>Environment.CurrentDirectory + "\Produkty.xlsx"</code></li>
+        <li>Aktualną datę w treści wstaw przez <code>Now.ToShortDateString</code></li>
+        <li>Nową linię w treści maila uzyskasz przez <code>vbNewLine</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Email Zadanie 2 -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 2 — Masowa wysyłka spersonalizowanych emaili</div>
+    <div class="task-topic">Temat: SMTP + reużywalny workflow + argumenty</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Wczytaj dane z pliku <code>"Koszulki email.xlsx"</code> (dane klientów i informacje o zamówieniach)</li>
+        <li>Używając pętli, wyślij <strong>spersonalizowane emaile</strong> do zamawiających</li>
+        <li>Treść maila czytaj z pliku:
+          <ul>
+            <li><code>"tresc emaila zamowiono.txt"</code> — jeśli w kolumnie <code>Status</code> jest <code>"Zamówiono"</code></li>
+            <li><code>"tresc emaila nie zamowiono.txt"</code> — dla pozostałych statusów</li>
+          </ul>
+        </li>
+        <li>Temat maila to wartość z kolumny <code>"Status"</code> z pobranej tabeli</li>
+        <li>Do wysyłki użyj gotowego workflow <code>Send_SMTP_Notification.xaml</code> (przekaż odpowiednie argumenty)</li>
+        <li>Poinformuj o wysyłce emaila przez argument <code>Out</code> i Message Box</li>
+      </ol>
+      <h4>Wskazówki</h4>
+      <ul>
+        <li>Do wywołania gotowego workflow użyj <code>Invoke Workflow File</code></li>
+        <li>Sprawdź jakie argumenty przyjmuje <code>Send_SMTP_Notification.xaml</code> (zakładka Arguments)</li>
+        <li>Treść pliku <code>.txt</code> wczytaj przez <code>Read Text File</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Email Zadanie 3 -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 3 — Pobieranie i archiwizacja załączników</div>
+    <div class="task-topic">Temat: IMAP — pobieranie emaili + praca z załącznikami + ZIP</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Pobierz wszystkie (top 30) maile z <code>zadaniemail123@gmail.com</code> — folder <code>Robotivity</code></li>
+        <li>Stwórz folder <code>Zalaczniki</code> i zapisz tam wszystkie załączniki ze wszystkich maili</li>
+        <li>Podaj ilość wszystkich załączników i wyświetl ich nazwy</li>
+        <li>Spakuj wszystkie załączniki do pliku ZIP — nazwa pliku ZIP to aktualna godzina</li>
+        <li><span class="bonus-tag">Bonus</span> Korzystając z <code>Send_SMTP_Notification.xaml</code> wyślij email z załączonym plikiem ZIP na adres <code>ada.makowka@robotivity.pl</code></li>
+        <li><span class="bonus-tag">Bonus</span> Usuń folder z załącznikami i plik ZIP</li>
+      </ol>
+      <h4>Wskazówki</h4>
+      <ul>
+        <li>Użyj <code>Get IMAP Mail Messages</code> (serwer: <code>imap.gmail.com</code>, port: <code>993</code>, SSL: True)</li>
+        <li>Do pracy z plikami/folderami użyj aktywności z pakietu <code>System</code> (Create Directory, Copy File itp.) lub wyrażeń <code>System.IO</code></li>
+        <li>Do tworzenia archiwum ZIP użyj <code>Compress/Zip Files</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Email Zadanie 4 -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 4 — Analiza zamówień z maili</div>
+    <div class="task-topic">Temat: IMAP + filtrowanie + raport w DataTable</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Pobierz e-maile z <code>zadaniemail123@gmail.com</code> — folder <code>Robotivity</code></li>
+        <li>Wyfiltruj tylko e-maile z tytułem zawierającym słowo <code>"Zamówienie"</code></li>
+        <li>Wyświetl (w logu) ilość znalezionych zamówień</li>
+        <li>Stwórz tabelę z detalami zamówień i zapisz do pliku <code>Zamowienie email.xlsx</code>:
+          <table>
+            <tr><th>Numer zamówienia</th><th>Data zamówienia</th><th>Email zamawiającego</th></tr>
+            <tr><td colspan="3" style="color:#aaa; font-style:italic;">…dane pobrane z maili…</td></tr>
+          </table>
+        </li>
+      </ol>
+      <h4>Wskazówki</h4>
+      <ul>
+        <li>Pobierz maile przez <code>Get IMAP Mail Messages</code> (folder: <code>Robotivity</code>, top: 30)</li>
+        <li>Wyfiltruj przez <code>If</code> z warunkiem <code>currentMailMessage.Subject.Contains("Zamówienie")</code></li>
+        <li>Numer zamówienia: <code>currentMailMessage.Subject.Split(" ").Last()</code></li>
+        <li>Data zamówienia: <code>currentMailMessage.DateAsDateTime.ToString("dd.MM.yyyy")</code></li>
+        <li>Adres nadawcy: <code>currentMailMessage.From.Address</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Moduł 4 -->
+  <div class="module-header">Moduł 4 — Data Scraping</div>
+
+  <!-- CEIDG -->
+  <div class="task-card">
+    <div class="task-title">Zadanie — Baza firm z CEIDG</div>
+    <div class="task-topic">Temat: Automatyczne pobieranie danych ze strony + filtrowanie + sortowanie</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Otwórz stronę: <code>https://prod.ceidg.gov.pl/CEIDG/CEIDG.Public.UI/Search.aspx</code></li>
+        <li>Wyszukaj firmy z <strong>Wrocławia</strong> z ulicy <strong>Hubskiej</strong></li>
+        <li>Pobierz ze strony maksymalnie <strong>50 wpisów</strong> (Nazwa firmy, URL, Przedsiębiorca, NIP, REGON)</li>
+        <li>Z pobranej bazy usuń wpisy, które nie mają numeru <strong>NIP</strong> lub <strong>REGON</strong></li>
+        <li>Posortuj nazwy firm <strong>od A do Z</strong></li>
+        <li>Finalną bazę danych zapisz do pliku <code>CEIDG wyniki.xlsx</code></li>
+      </ol>
+      <h4>Wskazówki</h4>
+      <ul>
+        <li>Użyj <code>Type Into</code> do wpisania miasta i ulicy w pola wyszukiwarki</li>
+        <li>Do pobrania tabeli ze strony użyj <code>Extract Table Data</code> — w opcjach ustaw <code>MaximumResults = 50</code></li>
+        <li>Do usunięcia wpisów bez NIP/REGON użyj <code>Filter Data Table</code> z trybem <code>Remove</code> i warunkiem pustości dla obu kolumn</li>
+        <li>Do sortowania użyj <code>Sort Data Table</code> (kolumna: <code>Firma przedsiebiorcy</code>, kierunek: <code>Ascending</code>)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <img src="logo.png" alt="Robotivity" style="height:36px; vertical-align:middle; margin-bottom:6px;"><br>
+    Szkolenie przygotowane przez <strong>Robotivity®</strong> — Autoryzowany Partner UiPath<br>
+    info@robotivity.pl &nbsp;·&nbsp; www.Robotivity.pl &nbsp;·&nbsp; tel.: +48 690 020 576
+  </div>
+
+</div>
+</body>
+</html>
