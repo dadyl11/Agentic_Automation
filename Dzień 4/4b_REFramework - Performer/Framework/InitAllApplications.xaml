@@ -1,0 +1,301 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Initialize_Applications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>396,292</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Management.Automation</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.ComponentModel</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Management.Automation</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.MetadataLoadContext</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="971.6,793.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence sap:VirtualizedContainerService.HintSize="483.2,739.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
+      <Sequence DisplayName="Otworz aplikacje" sap:VirtualizedContainerService.HintSize="449.6,481.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="Username" />
+          <Variable x:TypeArguments="ss:SecureString" Name="Password" />
+          <Variable x:TypeArguments="x:String" Name="str_sciezka_do_aplikacji" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="dane_do_logowania_robotivity" CacheStrategy="None" DisplayName="Get Credential" FolderPath="zadaniemail123@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="416,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[Password]" Username="[Username]">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:GetRobotCredential>
+        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="adres_aplikacji_robotivity" CacheStrategy="None" DisplayName="Get Asset" FolderPath="zadaniemail123@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="416,175.2" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+          <ui:GetRobotAsset.Value>
+            <OutArgument x:TypeArguments="x:String">[str_sciezka_do_aplikacji]</OutArgument>
+          </ui:GetRobotAsset.Value>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:GetRobotAsset>
+        <uix:NApplicationCard CloseMode="Never" DisplayName="Browser" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="872cf47c-2575-4503-a15f-3a1b84000eae">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="524.8,492.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="491.2,431.2" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="2" RetryInterval="00:00:03">
+                  <ui:RetryScope.ActivityBody>
+                    <ActivityAction>
+                      <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="449.6,221.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Exit'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,56.8" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="872cf47c-2575-4503-a15f-3a1b84000eae" Text="[Username]" Version="V5">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable CVScreenId="9d84cb97-472d-4240-8531-9fc726635f65" DesignTimeRectangle="87, 312, 249, 21" ElementType="InputBox" FullSelectorArgument="&lt;wnd ctrlname='txtUserName' /&gt;" Guid="63a5c4b5-5818-4fe4-9bd0-3a206a888329" InformativeScreenshot="20dd4916adb155d94b9086561db432b6.png" ScopeSelectorArgument="&lt;wnd app='robotivity.exe' ctrlname='Form1' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="Interactive" />
+                          </uix:NTypeInto.Target>
+                          <uix:NTypeInto.VerifyOptions>
+                            <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                              <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                <InArgument x:TypeArguments="x:Boolean" />
+                              </uix:VerifyExecutionTypeIntoOptions.Retry>
+                              <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                <InArgument x:TypeArguments="x:Double" />
+                              </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                            </uix:VerifyExecutionTypeIntoOptions>
+                          </uix:NTypeInto.VerifyOptions>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NTypeInto>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'WindowsForms10.EDIT.app…'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,56.8" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="872cf47c-2575-4503-a15f-3a1b84000eae" SecureText="[Password]" Version="V5">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable CVScreenId="eb7e71de-5032-4f0d-862d-f0d86ae9be4b" DesignTimeRectangle="86, 420, 249, 21" ElementType="InputBox" FullSelectorArgument="&lt;wnd ctrlname='txtPassword' /&gt;" Guid="8a59a673-4a55-4736-8027-c4bc9a4b5770" InformativeScreenshot="04f981c008619f028b79a14c72c43c0d.png" ScopeSelectorArgument="&lt;wnd app='robotivity.exe' ctrlname='Form1' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="Interactive" />
+                          </uix:NTypeInto.Target>
+                          <uix:NTypeInto.VerifyOptions>
+                            <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                              <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                <InArgument x:TypeArguments="x:Boolean" />
+                              </uix:VerifyExecutionTypeIntoOptions.Retry>
+                              <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                <InArgument x:TypeArguments="x:Double" />
+                              </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                            </uix:VerifyExecutionTypeIntoOptions>
+                          </uix:NTypeInto.VerifyOptions>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NTypeInto>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'LOG IN'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="872cf47c-2575-4503-a15f-3a1b84000eae" Version="V5">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable CVScreenId="73df6560-1382-489c-95fb-0110691261a5" DesignTimeRectangle="41, 507, 295, 41" ElementType="Button" FullSelectorArgument="&lt;wnd ctrlname='button1' /&gt;" FuzzyAccuracy="0.89" FuzzySelectorArgument="&lt;wnd ctrlname='button1' matching:ctrlname='fuzzy' fuzzylevel:ctrlname='0.0' check:text='LOG IN' /&gt;" Guid="c3837918-551c-4214-ac4c-b80db18b2c4e" InformativeScreenshot="cc205c34283ec0131035c507e1db7b07.png" ScopeSelectorArgument="&lt;wnd app='robotivity.exe' ctrlname='Form1' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V6" Visibility="Interactive" WaitForReadyArgument="Interactive" />
+                          </uix:NClick.Target>
+                          <uix:NClick.VerifyOptions>
+                            <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                              <uix:VerifyExecutionOptions.Retry>
+                                <InArgument x:TypeArguments="x:Boolean" />
+                              </uix:VerifyExecutionOptions.Retry>
+                              <uix:VerifyExecutionOptions.Timeout>
+                                <InArgument x:TypeArguments="x:Double" />
+                              </uix:VerifyExecutionOptions.Timeout>
+                            </uix:VerifyExecutionOptions>
+                          </uix:NClick.VerifyOptions>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NClick>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:RetryScope.ActivityBody>
+                  <ui:RetryScope.Condition>
+                    <ActivityFunc x:TypeArguments="x:Boolean">
+                      <uix:NCheckState DisplayName="Check App State 'Accept'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="449.6,24.8" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="872cf47c-2575-4503-a15f-3a1b84000eae" Version="V5">
+                        <uix:NCheckState.IfExists>
+                          <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,230.4" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,168.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Zalogowano do programu&quot;]" />
+                          </Sequence>
+                        </uix:NCheckState.IfExists>
+                        <uix:NCheckState.IfNotExists>
+                          <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,578.4" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[&quot;Nie zalogowano do programu&quot;]" />
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'OK'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="872cf47c-2575-4503-a15f-3a1b84000eae" Version="V5">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable CVScreenId="2b4a7cce-65fd-41e6-8a7d-b66a7c611e91" DesignTimeRectangle="321, 123, 104, 29" ElementType="Button" FullSelectorArgument="&lt;wnd ctrlid='2' title='OK' /&gt;" Guid="df93d108-ba29-4b71-b21d-da41b0f208b7" InformativeScreenshot="bf0d3689d318136e8ebe6681ceceb804.png" ScopeSelectorArgument="&lt;wnd app='robotivity.exe' cls='#32770' idx='*' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="Interactive" />
+                              </uix:NClick.Target>
+                              <uix:NClick.VerifyOptions>
+                                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                                  <uix:VerifyExecutionOptions.Retry>
+                                    <InArgument x:TypeArguments="x:Boolean" />
+                                  </uix:VerifyExecutionOptions.Retry>
+                                  <uix:VerifyExecutionOptions.Timeout>
+                                    <InArgument x:TypeArguments="x:Double" />
+                                  </uix:VerifyExecutionOptions.Timeout>
+                                </uix:VerifyExecutionOptions>
+                              </uix:NClick.VerifyOptions>
+                            </uix:NClick>
+                            <Throw Exception="[new SystemException(&quot;Nieudane logowanie&quot;)]" sap:VirtualizedContainerService.HintSize="416,115.2" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                          </Sequence>
+                        </uix:NCheckState.IfNotExists>
+                        <uix:NCheckState.Target>
+                          <uix:TargetAnchorable CVScreenId="b2c01523-4ed6-477d-832f-be3923f71ee6" DesignTimeRectangle="36, 541, 100, 38" ElementType="Button" FullSelectorArgument="&lt;wnd ctrlname='panel1' /&gt;&lt;wnd ctrlname='btnAccept' /&gt;" Guid="9dbc83cf-6367-4316-9250-8b9dd67362ef" InformativeScreenshot="ca61f4b8ff780645a708bedc2bfdd593.png" ScopeSelectorArgument="&lt;wnd app='robotivity.exe' ctrlname='Form2' /&gt;" SearchSteps="Selector" Version="V6" Visibility="Interactive" WaitForReadyArgument="Interactive" />
+                        </uix:NCheckState.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </uix:NCheckState>
+                    </ActivityFunc>
+                  </ui:RetryScope.Condition>
+                </ui:RetryScope>
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp Area="1323, 174, 385, 608" FilePath="[str_sciezka_do_aplikacji]" IconBase64="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" InformativeScreenshot="1d469b5936de0154fb76cbe7885f4b11.png" Selector="&lt;wnd app='robotivity.exe' ctrlname='Form1' /&gt;" Version="V2" />
+          </uix:NApplicationCard.TargetApp>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </uix:NApplicationCard>
+      </Sequence>
+    </Sequence>
+  </Sequence>
+</Activity>
