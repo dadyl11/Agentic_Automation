@@ -1,0 +1,496 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.MetadataLoadContext</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="915.2,622.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart sap2010:Annotation.AnnotationText="Sprawdź na podstawie numeru NIP, czy dana firma figuruje w rejestrze VAT czy nie - &quot;Biała Lista&quot;.&#xA;Adres www: https://www.podatki.gov.pl/wykaz-podatnikow-vat-wyszukiwarka" sap:VirtualizedContainerService.HintSize="915.2,622.4" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+      <Flowchart.Variables>
+        <Variable x:TypeArguments="x:Boolean" Name="bl_czy_plik_istnieje" />
+        <Variable x:TypeArguments="sd:DataTable" Name="dt_CEIDG" />
+        <Variable x:TypeArguments="x:Int32" Name="int_liczba_wierszy">
+          <Variable.Default>
+            <Literal x:TypeArguments="x:Int32" />
+          </Variable.Default>
+        </Variable>
+        <Variable x:TypeArguments="x:Int32" Name="int_licznik">
+          <Variable.Default>
+            <Literal x:TypeArguments="x:Int32" />
+          </Variable.Default>
+        </Variable>
+      </Flowchart.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <av:Point x:Key="ShapeLocation">435,35</av:Point>
+          <av:Size x:Key="ShapeSize">49.6,49.6</av:Size>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <av:PointCollection x:Key="ConnectorLocation">459.8,84.6 459.8,114.6 460.2,114.6 460.2,155</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Flowchart.StartNode>
+        <x:Reference>__ReferenceID10</x:Reference>
+      </Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID10">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">405,155</av:Point>
+            <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">460.2,225.4 460.2,255.4 460,255.4 460,270</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[bl_czy_plik_istnieje]" sap:VirtualizedContainerService.HintSize="110.4,70.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="CEIDG.xlsx" PathType="File">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:PathExists>
+        <FlowStep.Next>
+          <FlowDecision x:Name="__ReferenceID1" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+            <FlowDecision.Condition>
+              <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="bl_czy_plik_istnieje" />
+            </FlowDecision.Condition>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <av:Point x:Key="ShapeLocation">430,270</av:Point>
+                <av:Size x:Key="ShapeSize">60,60</av:Size>
+                <av:PointCollection x:Key="TrueConnector">430,300 400,300 400,300.2 255.4,300.2</av:PointCollection>
+                <av:PointCollection x:Key="FalseConnector">490,300 520,300 520,300.2 595,300.2</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <FlowDecision.True>
+              <FlowStep x:Name="__ReferenceID2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">145,265</av:Point>
+                    <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">200.2,335.4 200.2,395</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_CEIDG]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="110.4,70.4" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="CEIDG.xlsx">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:ReadRange>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <av:Point x:Key="ShapeLocation">145,395</av:Point>
+                        <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
+                        <av:PointCollection x:Key="ConnectorLocation">200.2,465.4 200.2,535</av:PointCollection>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Assign - liczymy ilosc przypadkow" sap:VirtualizedContainerService.HintSize="110.4,70.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[int_liczba_wierszy]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[dt_CEIDG.RowCount]</InArgument>
+                      </Assign.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Assign>
+                    <FlowStep.Next>
+                      <FlowStep x:Name="__ReferenceID5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">145,535</av:Point>
+                            <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
+                            <av:PointCollection x:Key="ConnectorLocation">255.4,570.2 355,570.2</av:PointCollection>
+                            <av:Point x:Key="AnnotationLocation">220,470</av:Point>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NApplicationCard sap2010:Annotation.AnnotationText="Close: Never" AttachMode="ByInstance" CloseMode="Never" DisplayName="Browser" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="110.4,70.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="1c3e49e0-f974-454b-be04-506b45ee5b06" Version="V2">
+                          <uix:NApplicationCard.Body>
+                            <ActivityAction x:TypeArguments="x:Object">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,91.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Sequence>
+                            </ActivityAction>
+                          </uix:NApplicationCard.Body>
+                          <uix:NApplicationCard.TargetApp>
+                            <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="1d4b51d505161f3786d59cff9614443e.jpg" Selector="&lt;html app='chrome.exe' title='Wykaz podatników VAT - wyszukiwarka' /&gt;" Url="https://www.podatki.gov.pl/wykaz-podatnikow-vat-wyszukiwarka" Version="V2" />
+                          </uix:NApplicationCard.TargetApp>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NApplicationCard>
+                        <FlowStep.Next>
+                          <FlowStep x:Name="__ReferenceID0">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <av:Point x:Key="ShapeLocation">355,535</av:Point>
+                                <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
+                                <av:PointCollection x:Key="ConnectorLocation">410.2,605.4 410.2,635.4 410,635.4 410,670</av:PointCollection>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="Assign - numer przypadku" sap:VirtualizedContainerService.HintSize="110.4,70.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[int_licznik]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[int_licznik + 1]</InArgument>
+                              </Assign.Value>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Assign>
+                            <FlowStep.Next>
+                              <FlowDecision x:Name="__ReferenceID6" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                                <FlowDecision.Condition>
+                                  <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="int_licznik &gt; int_liczba_wierszy" />
+                                </FlowDecision.Condition>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <av:Point x:Key="ShapeLocation">380,670</av:Point>
+                                    <av:Size x:Key="ShapeSize">60,60</av:Size>
+                                    <av:PointCollection x:Key="TrueConnector">380,700 350,700 350,700.2 255.4,700.2</av:PointCollection>
+                                    <av:PointCollection x:Key="FalseConnector">440,700 470,700 470,700.2 525,700.2</av:PointCollection>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <FlowDecision.True>
+                                  <FlowStep x:Name="__ReferenceID7">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">145,665</av:Point>
+                                        <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">200.2,735.4 200.2,805</av:PointCollection>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Koniec danych do procesowania&quot;]">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:LogMessage>
+                                    <FlowStep.Next>
+                                      <FlowStep x:Name="__ReferenceID8">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <av:Point x:Key="ShapeLocation">145,805</av:Point>
+                                            <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
+                                            <av:PointCollection x:Key="ConnectorLocation">227.20000000000002,948.6200000000001 326.8,948.6200000000001</av:PointCollection>
+                                            <av:Point x:Key="AnnotationLocation">30,890</av:Point>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <uix:NApplicationCard sap2010:Annotation.AnnotationText="Close: Always" AttachMode="ByInstance" CloseMode="Always" DisplayName="Browser" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="483.20000000000005,339.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="1c3e49e0-f974-454b-be04-506b45ee5b06" Version="V2">
+                                          <uix:NApplicationCard.Body>
+                                            <ActivityAction x:TypeArguments="x:Object">
+                                              <ActivityAction.Argument>
+                                                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                                              </ActivityAction.Argument>
+                                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,91.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </Sequence>
+                                            </ActivityAction>
+                                          </uix:NApplicationCard.Body>
+                                          <uix:NApplicationCard.TargetApp>
+                                            <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="1d4b51d505161f3786d59cff9614443e.jpg" Selector="&lt;html app='chrome.exe' title='Wykaz podatników VAT - wyszukiwarka' /&gt;" Url="https://www.podatki.gov.pl/wykaz-podatnikow-vat-wyszukiwarka" Version="V2" />
+                                          </uix:NApplicationCard.TargetApp>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </uix:NApplicationCard>
+                                      </FlowStep>
+                                    </FlowStep.Next>
+                                  </FlowStep>
+                                </FlowDecision.True>
+                                <FlowDecision.False>
+                                  <FlowStep x:Name="__ReferenceID9">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">525,665</av:Point>
+                                        <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">635.4,700.2 665.4,700.2 665.4,570.2 465.4,570.2</av:PointCollection>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Sequence DisplayName="Sequence - wyszukiwanie" sap:VirtualizedContainerService.HintSize="1052.8,1506.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                      <Sequence.Variables>
+                                        <Variable x:TypeArguments="sd:DataRow" Name="row_wiersz_tabeli" />
+                                      </Sequence.Variables>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="1019.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="sd:DataRow">[row_wiersz_tabeli]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="sd:DataRow">[dt_CEIDG.Rows(int_licznik-1)]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <uix:NApplicationCard sap2010:Annotation.AnnotationText="Close: Never" AttachMode="ByInstance" CloseMode="Never" DisplayName="Browser" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="1019.2,1332.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InteractionMode="DebuggerApi" ScopeGuid="1c3e49e0-f974-454b-be04-506b45ee5b06" Version="V2">
+                                        <uix:NApplicationCard.Body>
+                                          <ActivityAction x:TypeArguments="x:Object">
+                                            <ActivityAction.Argument>
+                                              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                                            </ActivityAction.Argument>
+                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="985.6,1061.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Radiobutton'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="952,225.6" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c3e49e0-f974-454b-be04-506b45ee5b06" Version="V5">
+                                                <uix:NClick.Target>
+                                                  <uix:TargetAnchorable BrowserURL="podatki.gov.pl/wykaz-podatnikow-vat-wyszukiwarka" CVScreenId="ca9ea37f-3539-48fb-b56c-4d692697faa2" DesignTimeRectangle="452, 502, 73, 28" ElementType="Text" FullSelectorArgument="&lt;webctrl aria-label='Wpisz numer nip' tag='LABEL' /&gt;" FuzzyAccuracy="0.89" FuzzySelectorArgument="&lt;webctrl aria-label='Wpisz numer nip' tag='LABEL' type='' class='radio-control-container' aaname='                                                                          NIP                                 ' matching:aria-label='fuzzy' fuzzylevel:aria-label='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='NIP' /&gt;" Guid="deef380f-e21f-43e8-adc2-1c2defe50b6b" InformativeScreenshot="6db6767df5e50654d96a08f2c6297df8.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wykaz podatników VAT - wyszukiwarka' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V6" Visibility="Interactive" WaitForReadyArgument="Interactive" />
+                                                </uix:NClick.Target>
+                                                <uix:NClick.VerifyOptions>
+                                                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                                                    <uix:VerifyExecutionOptions.Retry>
+                                                      <InArgument x:TypeArguments="x:Boolean" />
+                                                    </uix:VerifyExecutionOptions.Retry>
+                                                    <uix:VerifyExecutionOptions.Timeout>
+                                                      <InArgument x:TypeArguments="x:Double" />
+                                                    </uix:VerifyExecutionOptions.Timeout>
+                                                  </uix:VerifyExecutionOptions>
+                                                </uix:NClick.VerifyOptions>
+                                              </uix:NClick>
+                                              <uix:NTypeInto ActivateBefore="True" sap2010:Annotation.AnnotationText="Po Type Into dodane klikniecie Enter na klawiaturze (w komendzie)" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'INPUT inputType'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="952,330.4" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="1c3e49e0-f974-454b-be04-506b45ee5b06" Text="[row_wiersz_tabeli.Item(&quot;NIP&quot;).ToString + &quot;[k(Enter)]&quot;]" Version="V5">
+                                                <uix:NTypeInto.Target>
+                                                  <uix:TargetAnchorable BrowserURL="podatki.gov.pl/wykaz-podatnikow-vat-wyszukiwarka" CVScreenId="0eb09515-1768-4c1e-8b2a-1b969245fa7f" DesignTimeRectangle="266, 551, 455, 45" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='inputType' tag='INPUT' /&gt;" FuzzyAccuracy="0.9" FuzzySelectorArgument="&lt;webctrl id='inputType' tag='INPUT' type='text' class='input-form' placeholder='Wpisz numer nip' aaname='Wpisz dane' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="cb8e0107-054a-48ff-9114-7a6417642648" InformativeScreenshot="652e57090bac5817857b75073195e4fa.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wykaz podatników VAT - wyszukiwarka' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V6" Visibility="Interactive" WaitForReadyArgument="Interactive" />
+                                                </uix:NTypeInto.Target>
+                                                <uix:NTypeInto.VerifyOptions>
+                                                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                                      <InArgument x:TypeArguments="x:Boolean" />
+                                                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                                      <InArgument x:TypeArguments="x:Double" />
+                                                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                                  </uix:VerifyExecutionTypeIntoOptions>
+                                                </uix:NTypeInto.VerifyOptions>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </uix:NTypeInto>
+                                              <uix:NCheckState DisplayName="Check App State 'Figuruje w rejestrze VAT'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="952,445.6" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="1c3e49e0-f974-454b-be04-506b45ee5b06" Timeout="3" Version="V5">
+                                                <uix:NCheckState.IfExists>
+                                                  <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,200.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;F&quot; + (int_licznik+1).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="416,140.8" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="Sheet1" Text="Figuruje na bialej liscie" WorkbookPath="CEIDG.xlsx" />
+                                                  </Sequence>
+                                                </uix:NCheckState.IfExists>
+                                                <uix:NCheckState.IfNotExists>
+                                                  <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,202.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;F&quot; + (int_licznik+1).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="416,140.8" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="Sheet1" Text="Nie figuruje na bialej liscie" WorkbookPath="CEIDG.xlsx" />
+                                                  </Sequence>
+                                                </uix:NCheckState.IfNotExists>
+                                                <uix:NCheckState.Target>
+                                                  <uix:TargetAnchorable BrowserURL="podatki.gov.pl/wykaz-podatnikow-vat-wyszukiwarka" CVScreenId="cd47d186-9102-487c-bf1a-05ee6d082753" DesignTimeRectangle="267, 717, 1385, 80" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='tableOne' tag='H4' /&gt;" FuzzyAccuracy="0.9" FuzzySelectorArgument="&lt;webctrl parentid='tableOne' tag='H4' type='' class='' aaname='Figuruje w rejestrze VAT' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Figuruje w rejestrze VAT' /&gt;" Guid="5184ce19-ef17-4978-b360-1b26e580e7fa" InformativeScreenshot="306292f9a0ff43760ba297d516bff877.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wykaz podatników VAT - wyszukiwarka' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V6" Visibility="Interactive" WaitForReadyArgument="Interactive" />
+                                                </uix:NCheckState.Target>
+                                              </uix:NCheckState>
+                                            </Sequence>
+                                          </ActivityAction>
+                                        </uix:NApplicationCard.Body>
+                                        <uix:NApplicationCard.TargetApp>
+                                          <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="1d4b51d505161f3786d59cff9614443e.jpg" Selector="&lt;html app='chrome.exe' title='Wykaz podatników VAT - wyszukiwarka' /&gt;" Url="https://www.podatki.gov.pl/wykaz-podatnikow-vat-wyszukiwarka" Version="V2" />
+                                        </uix:NApplicationCard.TargetApp>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </uix:NApplicationCard>
+                                    </Sequence>
+                                    <FlowStep.Next>
+                                      <x:Reference>__ReferenceID0</x:Reference>
+                                    </FlowStep.Next>
+                                  </FlowStep>
+                                </FlowDecision.False>
+                              </FlowDecision>
+                            </FlowStep.Next>
+                          </FlowStep>
+                        </FlowStep.Next>
+                      </FlowStep>
+                    </FlowStep.Next>
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowDecision.True>
+            <FlowDecision.False>
+              <FlowStep x:Name="__ReferenceID3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">595,265</av:Point>
+                    <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="110.4,70.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;Brak danych do sprawdzenia&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </FlowStep>
+            </FlowDecision.False>
+          </FlowDecision>
+        </FlowStep.Next>
+      </FlowStep>
+      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID2</x:Reference>
+      <x:Reference>__ReferenceID3</x:Reference>
+      <x:Reference>__ReferenceID4</x:Reference>
+      <x:Reference>__ReferenceID5</x:Reference>
+      <x:Reference>__ReferenceID0</x:Reference>
+      <x:Reference>__ReferenceID6</x:Reference>
+      <x:Reference>__ReferenceID7</x:Reference>
+      <x:Reference>__ReferenceID8</x:Reference>
+      <x:Reference>__ReferenceID9</x:Reference>
+    </Flowchart>
+  </Sequence>
+</Activity>
