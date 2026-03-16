@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zadania praktyczne — Szkolenie UiPath — Dzień 3 i 4</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #222;
+      background: #e8f1fb;
+      padding: 20px;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px 50px;
+      box-shadow: 0 2px 12px rgba(30,77,140,0.13);
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      border-bottom: 3px solid #5b9bd5;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+
+    .header img {
+      height: 70px;
+      width: auto;
+      flex-shrink: 0;
+    }
+
+    .header-text {
+      flex: 1;
+    }
+
+    .header-text h1 {
+      font-size: 22px;
+      color: #1e4d8c;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      margin-bottom: 3px;
+    }
+
+    .header-text .subtitle {
+      font-size: 13px;
+      color: #5b9bd5;
+      font-weight: 600;
+    }
+
+    .header-text .subtitle-small {
+      font-size: 12px;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    /* Day headers */
+    .day-header {
+      background: #1e4d8c;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 10px 18px;
+      margin: 30px 0 20px 0;
+      border-radius: 4px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* Module headers */
+    .module-header {
+      background: #eaf3fb;
+      color: #1e4d8c;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 16px;
+      margin: 24px 0 14px 0;
+      border-left: 4px solid #5b9bd5;
+      border-radius: 0 3px 3px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Task card */
+    .task-card {
+      border: 1px solid #cde0f5;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .task-card.intro {
+      border-color: #b3d1f0;
+    }
+
+    .task-title {
+      background: #5b9bd5;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 9px 16px;
+    }
+
+    .task-card.intro .task-title {
+      background: #3a7abf;
+    }
+
+    .task-topic {
+      background: #f0f7ff;
+      font-size: 12px;
+      color: #2a6096;
+      padding: 5px 16px;
+      border-bottom: 1px solid #cde0f5;
+      font-style: italic;
+    }
+
+    .task-card.intro .task-topic {
+      background: #e4f0fb;
+      color: #1e4d8c;
+      border-bottom-color: #b3d1f0;
+    }
+
+    .task-body {
+      padding: 14px 16px;
+    }
+
+    .task-body h4 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #1e4d8c;
+      margin: 12px 0 6px 0;
+      letter-spacing: 0.6px;
+    }
+
+    .task-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .task-body ol, .task-body ul {
+      padding-left: 20px;
+    }
+
+    .task-body ol li, .task-body ul li {
+      margin-bottom: 4px;
+    }
+
+    code {
+      background: #eaf3fb;
+      color: #1e4d8c;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 12px;
+      border: 1px solid #cde0f5;
+    }
+
+    pre {
+      background: #f4f9ff;
+      border: 1px solid #cde0f5;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 12px;
+      margin: 8px 0;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+      color: #1e4d8c;
+    }
+
+    .hint-box {
+      background: #e8f4fd;
+      border-left: 3px solid #5b9bd5;
+      padding: 8px 12px;
+      margin: 8px 0;
+      font-size: 13px;
+      border-radius: 0 3px 3px 0;
+      color: #1e4d8c;
+    }
+
+    .bonus-tag {
+      display: inline-block;
+      background: #3a7abf;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 3px;
+      margin-right: 4px;
+      vertical-align: middle;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 13px;
+      margin: 8px 0;
+    }
+
+    table th {
+      background: #eaf3fb;
+      font-weight: 700;
+      padding: 6px 10px;
+      border: 1px solid #cde0f5;
+      text-align: left;
+      color: #1e4d8c;
+    }
+
+    table td {
+      padding: 5px 10px;
+      border: 1px solid #cde0f5;
+    }
+
+    strong {
+      color: #1e4d8c;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+      border-top: 2px solid #eaf3fb;
+      margin-top: 36px;
+      padding-top: 16px;
+    }
+
+    .footer strong {
+      color: #1e4d8c;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+        font-size: 12px;
+      }
+
+      .page {
+        box-shadow: none;
+        padding: 20px 30px;
+        max-width: 100%;
+      }
+
+      .task-card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .day-header {
+        page-break-before: always;
+      }
+
+      .day-header:first-of-type {
+        page-break-before: avoid;
+      }
+
+      code {
+        border: none;
+        background: #f0f0f0;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <img src="logo.png" alt="Robotivity logo">
+    <div class="header-text">
+      <h1>Zadania praktyczne — Szkolenie UiPath</h1>
+      <div class="subtitle">Autoryzowany Partner UiPath</div>
+      <div class="subtitle-small">info@robotivity.pl &nbsp;&middot;&nbsp; www.Robotivity.pl &nbsp;&middot;&nbsp; tel.: +48 690 020 576</div>
+    </div>
+  </div>
+
+  <!-- ==================== DZIEN 3 ==================== -->
+  <div class="day-header">Dzien 3</div>
+
+  <div class="module-header">Modul 5 — Operacje na plikach i folderach</div>
+
+  <!-- Zadanie 1 - Pliki foldery -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 1 — Kopiowanie plikow</div>
+    <div class="task-topic">Temat: Operacje na plikach + For Each File in Folder + Path Exists</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Skopiuj plik <code>Produkty.xlsx</code> do folderu wybranego przez uzytkownika</li>
+        <li>Sprawdz czy skopiowany plik istnieje w folderze docelowym</li>
+        <li>Wyswietl informacje w logu: ktory plik jest procesowany i czy kopiowanie sie powiodlo</li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Do pobrania biezacego folderu uzyj <code>Get Environment Variable</code> (zmienna: <code>CurrentDirectory</code>)</li>
+        <li>Do wyboru folderu docelowego uzyj <code>Browse For Folder</code> (Select Folder)</li>
+        <li>Uzyj <code>For Each File in Folder</code> z filtrem <code>*.xlsx</code></li>
+        <li>Do kopiowania uzyj <code>Copy File</code></li>
+        <li>Do sprawdzenia istnienia pliku uzyj <code>Path Exists</code> (PathType: File)</li>
+        <li>Sciezke docelowa buduj przez <code>Path.Combine(str_docelowy_folder, "Produkty.xlsx")</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Zadanie 2 - Rozpakowanie i raport -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 2 — Rozpakowanie i raport plikow</div>
+    <div class="task-topic">Temat: Extract/Unzip + Build Data Table + FileInfo + Write CSV</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Rozpakuj plik <code>Raporty.zip</code> do folderu <code>Raporty</code></li>
+        <li>Korzystajac z <strong>DirectoryInfo</strong> i <strong>FileInfo</strong> stworz tabele zawierajaca szczegoly rozpakowanych plikow:
+          <table>
+            <tr><th>Nazwa pliku</th><th>Folder</th><th>Rozszerzenie</th><th>Rozmiar</th></tr>
+            <tr><td colspan="4" style="color:#aaa; font-style:italic;">...dane pobrane z FileInfo...</td></tr>
+          </table>
+        </li>
+        <li>Zapisz te tabele jako plik CSV w folderze z rozpakowanymi plikami</li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Uzyj <code>Extract/Unzip Files</code> z opcja <strong>Extract to dedicated folder</strong> — tworzy folder o nazwie pliku ZIP</li>
+        <li>Do stworzenia tabeli uzyj <code>Build Data Table</code> z kolumnami: Nazwa pliku, Folder, Rozszerzenie, Rozmiar</li>
+        <li>Iteruj po plikach za pomoca <code>For Each File in Folder</code></li>
+        <li>Uzyj <code>Modify Text</code> z operacja <strong>Find and Replace</strong> do usuniecia rozszerzenia z nazwy pliku (zastap <code>CurrentFile.Extension</code> pustym ciagiem)</li>
+        <li>Rozszerzenie mozesz sformatowac do duzych liter (<code>ToUpper</code>)</li>
+        <li>Dodaj wiersz do tabeli przez <code>Add Data Row</code> (ArrayRow)</li>
+        <li>Na koniec uzyj <code>Write CSV</code> do zapisu tabeli</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Zadanie 3 - Sortowanie plikow -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 3 — Sortowanie plikow do folderow</div>
+    <div class="task-topic">Temat: Create Folder + Switch + Move File + For Each File in Folder</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>W katalogu <code>Pliki do zadan</code> stworz foldery: <strong>PDF</strong>, <strong>DOCX</strong>, <strong>XLSX</strong></li>
+        <li>Zawartosc folderu <code>Pliki do zadan</code> przeniesc do odpowiadajacych rozszerzeniu folderow</li>
+        <li>Poinformuj (Log Message) jakie pliki przenosisz i do jakiego folderu</li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Nazwy folderow docelowych przechowuj w tablicy: <code>{"PDF", "DOCX", "XLSX"}</code></li>
+        <li>Uzyj <code>For Each</code> do tworzenia folderow przez <code>Create Folder</code></li>
+        <li>Do sortowania plikow uzyj <code>For Each File in Folder</code> i aktywnosci <code>Switch</code></li>
+        <li>Klucz Switch: <code>CurrentFile.Extension.Replace(".", Nothing).ToUpper</code></li>
+        <li>W kazdym case (PDF, DOCX, XLSX) uzyj <code>Move File</code> z odpowiednia sciezka docelowa</li>
+        <li>Sciezke buduj przez <code>Path.Combine(str_folder_z_plikami, "PDF")</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Zadanie 3 Rozszerzenie - Podsumowanie -->
+  <div class="task-card">
+    <div class="task-title"><span class="bonus-tag">Rozszerzenie</span> Zadanie 3 — Podsumowanie przeniesionych plikow</div>
+    <div class="task-topic">Temat: Dictionary(Of String, Int32) jako licznik + zliczanie plikow wg rozszerzenia</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Po przeniesieniu plikow (Zadanie 3) wyswietl <strong>podsumowanie</strong>: ile plikow trafilo do kazdego folderu</li>
+        <li>Uzyj <code>Dictionary(Of String, Int32)</code> do zliczania plikow wg rozszerzenia</li>
+        <li>Na koniec wyswietl wynik w logu: np. <code>"PDF: 3 pliki, DOCX: 2 pliki"</code></li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Zainicjalizuj: <code>dict_podsumowanie = New Dictionary(Of String, Int32)</code></li>
+        <li>W kazdym Case (Zadanie 3) dodaj zliczanie: <code>If dict_podsumowanie.ContainsKey("PDF") Then dict_podsumowanie("PDF") = dict_podsumowanie("PDF") + 1 Else dict_podsumowanie("PDF") = 1</code></li>
+        <li>Po petli: uzyj <code>For Each</code> po <code>dict_podsumowanie</code> i <code>Log Message</code>: <code>pair.Key + ": " + pair.Value.ToString + " plikow"</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Zadanie dodatkowe 4 - Monitoring folderu -->
+  <div class="task-card">
+    <div class="task-title"><span class="bonus-tag">Dodatkowe</span> Zadanie 4 — Monitoring folderu z raportem email</div>
+    <div class="task-topic">Temat: For Each File in Folder + CreationTime + List(Of String) + Send SMTP Mail Message</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Monitoruj folder <code>Raporty</code> — jesli w ciagu ostatnich <strong>24h</strong> pojawil sie nowy plik <code>.xlsx</code>, wyslij email z lista nowych plikow</li>
+        <li>Jesli nie ma nowych plikow — wyswietl Log Message: <code>"Brak nowych plikow w ostatnich 24h"</code></li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Uzyj <code>Now.AddHours(-24)</code> jako date graniczna</li>
+        <li>Iteruj po plikach <code>*.xlsx</code> w folderze Raporty</li>
+        <li>Sprawdzaj: <code>CurrentFile.CreationTime &gt; dat_granica</code></li>
+        <li>Dodawaj nazwy nowych plikow do <code>List(Of String)</code> przez <code>Add To Collection</code></li>
+        <li>Tresc emaila buduj przez: <code>String.Join(vbNewLine, lst_nowe_pliki)</code></li>
+        <li>Do wysylki uzyj <code>Send SMTP Mail Message</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="module-header">Modul 6 — Flowchart + Biala Lista</div>
+
+  <!-- Biala Lista -->
+  <div class="task-card">
+    <div class="task-title">Zadanie — Sprawdzanie firm na Bialej Liscie VAT</div>
+    <div class="task-topic">Temat: Flowchart + automatyzacja przegladarki + For Each Row + Type Into</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Na Flowcharcie stworz workflow, ktory sprawdzi na podstawie numeru NIP, czy dana firma figuruje w rejestrze VAT (<strong>Biala Lista</strong>)</li>
+        <li>Adres strony: <code>https://www.podatki.gov.pl/wykaz-podatnikow-vat-wyszukiwarka</code></li>
+        <li>Dane NIP pobierz z pliku <code>CEIDG.xlsx</code></li>
+        <li>Dla kazdego wiersza z tabeli wpisz NIP w wyszukiwarke i sprawdz wynik</li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Uzyj <code>Read Range</code> do wczytania pliku <code>CEIDG.xlsx</code> do DataTable</li>
+        <li>Iteruj po wierszach przez <code>For Each Row in DataTable</code></li>
+        <li>Uzyj <code>Type Into</code> z wyrazeniem: <code>row_wiersz_tabeli.Item("NIP").ToString + "[k(Enter)]"</code> — wpisuje NIP i zatwierdza Enterem</li>
+        <li>Uzyj <code>Use Application/Browser</code> z trybem Close: Never (aby nie zamykac przegladarki miedzy iteracjami)</li>
+        <li>Do sprawdzenia wyniku uzyj <code>Check App State</code>:
+          <ul>
+            <li><strong>Target appears</strong> (tekst "Podmiot czynny"): <code>str_status_VAT = "Czynny"</code></li>
+            <li><strong>Target does not appear</strong> ("Nie znaleziono"): <code>str_status_VAT = "Niezarejestrowany"</code></li>
+          </ul>
+        </li>
+        <li>Zapisz wynik do tabeli: <code>dt_CEIDG.Rows(int_licznik - 1)("Status VAT") = str_status_VAT</code></li>
+      </ul>
+      <h4><span class="bonus-tag">Rozszerzenie</span> Zapis wynikow do Excel</h4>
+      <ol>
+        <li>Przed petla: <code>Add Data Column</code> — dodaj kolumne <code>"Status VAT"</code> do <code>dt_CEIDG</code></li>
+        <li>W petli: zapisuj wynik do <code>dt_CEIDG.Rows(int_licznik - 1)("Status VAT") = str_status_VAT</code></li>
+        <li>Po petli: <code>Write Range</code> — zapisz <code>dt_CEIDG</code> do <code>CEIDG_wyniki.xlsx</code></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="module-header">Modul 7 — Orchestrator</div>
+
+  <!-- Orchestrator Zadanie 1 - Logowanie -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 1 — Logowanie z uzyciem Assetow</div>
+    <div class="task-topic">Temat: Orchestrator Assets (Text + Credential) + Get Asset + Get Credential</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Stworz w Orchestratorze <strong>Asset typu Text</strong> ze sciezka do aplikacji <code>Robotivity.exe</code></li>
+        <li>Stworz w Orchestratorze <strong>Asset typu Credential</strong> z poswiadczeniem <code>admin/password</code></li>
+        <li>Pobierz te Assety do robota</li>
+        <li>Uruchom aplikacje Robotivity i zaloguj sie do niej za pomoca pobranych Assetow</li>
+        <li>Sprawdz czy logowanie sie powiodlo (<code>Check App State</code>) — jesli TAK, wyswietl Log Message; jesli NIE, kliknij OK i wyswietl blad</li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Assety tworz w folderze <strong>My Workspace</strong> w Orchestratorze</li>
+        <li>Do pobrania sciezki uzyj <code>Get Asset</code> (typ Text)</li>
+        <li>Do pobrania loginu i hasla uzyj <code>Get Credential</code> — haslo jest typu <code>SecureString</code></li>
+        <li>Przed logowaniem uzyj <code>Kill Process</code> (robotivity) — czyste srodowisko</li>
+        <li>Do wpisania hasla uzyj <code>Type Into</code> z wlasciwoscia <strong>SecureText</strong> (nie Text!)</li>
+        <li>Uzyj <code>Check App State</code> aby zweryfikowac logowanie (szukaj elementu z formularza po zalogowaniu, np. przycisk "Accept")</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Orchestrator Zadanie 2 - Dispatcher -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 2 — Dispatcher (dodawanie transakcji do Queue)</div>
+    <div class="task-topic">Temat: Orchestrator Queues + Add Queue Item / Bulk Add Queue Items</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Stworz <strong>Queue</strong> w Orchestratorze (folder My Workspace)</li>
+        <li>Wczytaj dane z pliku <code>Transactions.xlsx</code></li>
+        <li>Dodaj dane jako <strong>Queue Items</strong> do utworzonej kolejki</li>
+        <li>Dodaj Log Message z informacja o dodanych transakcjach</li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Do hurtowego dodania uzyj <code>Bulk Add Queue Items</code></li>
+        <li><span class="bonus-tag">Bonus</span> Dodaj transakcje po jednej (For Each Row + <code>Add Queue Item</code>) z unikatowa referencja (licznik)</li>
+        <li>Pamietaj o ustawieniu <strong>FolderPath</strong> na swoj workspace</li>
+      </ul>
+      <div class="hint-box">
+        <strong>Uwaga:</strong> Jesli dodajesz oryginalny numer referencji, scope zmiennej-licznika musi byc wiekszy niz petla — inaczej wartosci sie gubia.
+      </div>
+    </div>
+  </div>
+
+  <!-- Orchestrator Zadanie 3 - Performer -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 3 — Performer (procesowanie Queue Items)</div>
+    <div class="task-topic">Temat: Flowchart + Get Transaction Item + Set Transaction Status + obsluga bledow</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Na <strong>Flowcharcie</strong> stworz workflow, ktory przeprocesuje Queue Items dodane w zadaniu 2</li>
+        <li>Dane do logowania do Robotivity pobierz z Asseta typu Credential</li>
+        <li>W przypadku zlego hasla zakoncz prace z komunikatem bledu systemowego <code>"Nie zalogowano"</code></li>
+        <li>Pobieraj transakcje z kolejki (<code>Get Transaction Item</code>) w petli</li>
+        <li>Dla kazdej transakcji wpisz wartosci (CashIn, OnUsCheck, NotOnUsCheck) do formularza aplikacji Robotivity</li>
+        <li>Jesli wartosci <strong>nie sa liczbowe</strong>, zmien status transakcji na <strong>Failed</strong> (Error Type: <code>Business</code>)</li>
+        <li>Jesli wartosci sa poprawne, kliknij Accept i zmien status na <strong>Successful</strong></li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Uzyj <code>FlowDecision</code> do sprawdzenia: czy zalogowano? czy jest transakcja?</li>
+        <li>Do pobrania transakcji uzyj <code>Get Transaction Item</code> (w Try-Catch — jesli brak, przypisz Nothing)</li>
+        <li>Warunek kontynuacji: <code>TransactionItem IsNot Nothing</code></li>
+        <li>Do pobrania danych z QueueItem uzyj: <code>TransactionItem.SpecificContent.GetValueOrDefault("CashIn").ToString</code></li>
+        <li>Sprawdz numerycznosc: <code>CashIn.IsNumeric And OnUsCheck.IsNumeric And NotOnUsCheck.IsNumeric</code></li>
+        <li>Do ustawienia statusu uzyj <code>Set Transaction Status</code> (Successful lub Failed z ErrorType Business)</li>
+        <li>Na koncu: <code>Kill Process</code> (robotivity) i Log Message o zakonczeniu</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="module-header">Modul 8 — State Machine (wprowadzenie)</div>
+
+  <!-- State Machine -->
+  <div class="task-card">
+    <div class="task-title">Zadanie — State Machine z Input Dialog</div>
+    <div class="task-topic">Temat: State Machine + Transitions + warunki + Final State</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Stworz robota opartego na <strong>State Machine</strong></li>
+        <li>W stanie poczatkowym (Init) pobierz od uzytkownika <strong>imie</strong> (Input Dialog)</li>
+        <li>Jesli imie to <code>"Adam"</code> — przypisz nazwisko <code>"Nowak"</code> i przejdz do Final State</li>
+        <li>Jesli imie to <code>"Kamil"</code> — przypisz nazwisko <code>"Kowalski"</code> i przejdz do Final State</li>
+        <li>Dla innego imienia — wrocz do stanu Init (powtorz pytanie)</li>
+        <li>W Final State wyswietl Log Message: <code>"Twoja osoba to: " + str_imie</code></li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Stworz nowy projekt typu <strong>State Machine</strong> (nie Sequence/Flowchart)</li>
+        <li>Dodaj dwa stany: <code>State</code> (Init) i <code>Final State</code></li>
+        <li>W stanie Init: dodaj <code>Input Dialog</code> w sekcji <strong>Entry</strong></li>
+        <li>Stworz trzy <strong>Transitions</strong> ze stanu Init:
+          <ul>
+            <li>Transition 1: Warunek <code>str_imie = "Adam"</code> → Action: Assign <code>str_nazwisko = "Nowak"</code> → Final State</li>
+            <li>Transition 2: Warunek <code>str_imie = "Kamil"</code> → Action: Assign <code>str_nazwisko = "Kowalski"</code> → Final State</li>
+            <li>Transition 3: Bez warunku (domyslna) → wraca do Init</li>
+          </ul>
+        </li>
+        <li>Final State: dodaj <code>Log Message</code> w sekcji <strong>Entry</strong></li>
+      </ul>
+      <div class="hint-box">
+        <strong>Klucz:</strong> Transitions sa ewaluowane w kolejnosci — domyslna (bez warunku) musi byc ostatnia, inaczej zawsze sie wykona!
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DZIEN 4 ==================== -->
+  <div class="day-header">Dzien 4</div>
+
+  <div class="module-header">Modul 9 — Dictionary</div>
+
+  <!-- Dictionary -->
+  <div class="task-card">
+    <div class="task-title">Zadanie — Kursy walut w Dictionary</div>
+    <div class="task-topic">Temat: Data Scraping + Dictionary&lt;String, String&gt; + For Each Row</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Otworz strone <code>https://nbp.pl/statystyka-i-sprawozdawczosc/kursy/tabela-a/</code></li>
+        <li>Zaczytaj dane z tabeli kursow walut i stworz plik <code>Waluty.xlsx</code></li>
+        <li>Przypisz wartosci z DataTable do <code>Dictionary(Of String, String)</code> — klucz: <strong>kod waluty</strong>, wartosc: <strong>kurs sredni</strong></li>
+        <li>Wyswietl kurs Euro w Log Message: <code>"Kurs euro to: " + dict_waluty("1 EUR").ToString</code></li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Uzyj <code>Use Application/Browser</code> z Chrome</li>
+        <li>Do pobrania tabeli uzyj <code>Extract Table Data</code></li>
+        <li>Zapisz tabele przez <code>Write Range Workbook</code> do <code>Waluty.xlsx</code></li>
+        <li>Zainicjalizuj slownik: <code>New Dictionary(Of String, String)</code></li>
+        <li>W petli <code>For Each Row in DataTable</code> przypisuj wartosci:
+          <pre>klucz = CurrentRow.Item(1).ToString
+wartosc = CurrentRow.Item(2).ToString
+dict_waluty(klucz) = wartosc</pre>
+        </li>
+        <li>Uzyj <code>Multiple Assign</code> do jednoczesnego przypisania klucza i wartosci</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Zadanie dodatkowe 2 - Tłumacz walut -->
+  <div class="task-card">
+    <div class="task-title"><span class="bonus-tag">Dodatkowe</span> Zadanie 2 — Tlumacz walut (interaktywny)</div>
+    <div class="task-topic">Temat: Dictionary + ContainsKey + While + Input Dialog + walidacja danych</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Wykonaj kroki 1-4 z Zadania Dictionary (pobierz tabele NBP &rarr; Dictionary)</li>
+        <li>Uzytkownik wpisuje kod waluty (np. <code>"1 EUR"</code>, <code>"1 USD"</code>) przez <strong>Input Dialog</strong></li>
+        <li>Robot zwraca kurs z Dictionary w <strong>Message Box</strong></li>
+        <li>Jesli kod nie istnieje — poinformuj uzytkownika i ponow pytanie</li>
+        <li>Wpisanie <code>"koniec"</code> zamyka robota</li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Uzyj petli <code>While</code> z flaga <code>bl_kontynuuj = True</code></li>
+        <li>Warunek wyjscia: <code>str_kod_waluty.ToLower = "koniec"</code> &rarr; <code>bl_kontynuuj = False</code></li>
+        <li>Przed odczytem ze slownika sprawdz: <code>dict_waluty.ContainsKey(str_kod_waluty)</code></li>
+        <li>Jesli klucz istnieje: <code>"Kurs " + str_kod_waluty + " wynosi: " + dict_waluty(str_kod_waluty)</code></li>
+        <li>Jesli nie: <code>"Nie znaleziono waluty: " + str_kod_waluty + ". Sprobuj ponownie."</code></li>
+      </ul>
+      <div class="hint-box">
+        <strong>Klucz:</strong> <code>dict.ContainsKey()</code> zapobiega <code>KeyNotFoundException</code> — zawsze sprawdzaj przed dostepem do slownika!
+      </div>
+    </div>
+  </div>
+
+  <div class="module-header">Modul 10 — Rozbudowane State Machine</div>
+
+  <!-- Rozbudowane State Machine -->
+  <div class="task-card">
+    <div class="task-title">Zadanie — State Machine z obsluga wyjatkow</div>
+    <div class="task-topic">Temat: State Machine + Try-Catch + Business/System Exception + Robotivity</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Uzywajac <strong>State Machine</strong> stworz robota, ktory:
+          <ul>
+            <li>Otworzy aplikacje <strong>Robotivity</strong> (w przypadku bledu robot ma zakonczyc dzialanie)</li>
+            <li>Wprowadzi transakcje z pliku <code>Transactions.xlsx</code></li>
+            <li>Na koncu wyswietli Log Message o zakonczeniu pracy</li>
+          </ul>
+        </li>
+        <li>Obsluz <strong>Business Exception</strong> — jesli dane nie sa numeryczne, pomin transakcje i przejdz do nastepnej</li>
+        <li>Obsluz <strong>System Exception</strong> — w przypadku bledu systemowego, restartuj aplikacje i wznow prace</li>
+      </ol>
+      <h4>Stany State Machine</h4>
+      <table>
+        <tr><th>Stan</th><th>Opis</th></tr>
+        <tr><td><strong>Init</strong></td><td>Zbierz zmienne, wyczysc srodowisko (Kill Process), otworz aplikacje, pobierz transakcje (Read Range), Try-Catch</td></tr>
+        <tr><td><strong>Get Transaction</strong></td><td>Sprawdz czy jest dostepna transakcja (wiersz z DT). Jesli brak &rarr; Final State. Korzystaj ze zmiennej <code>TransactionNumber</code> (default = 1)</td></tr>
+        <tr><td><strong>Process</strong></td><td>Przetwarzaj transakcje. Business Exception &rarr; pomin, System Exception &rarr; restart. Po tranzycji wyczysc zmienna Business Rule Exception</td></tr>
+        <tr><td><strong>Final State</strong></td><td>Zamknij aplikacje, wyswietl podsumowanie</td></tr>
+      </table>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Uzyj zmiennej <code>TransactionNumber</code> (Int32, default: 1) do sledzenia biezacej transakcji</li>
+        <li>Pobieraj wiersz: <code>dt_transakcje.Rows(TransactionNumber - 1)</code></li>
+        <li>Warunek braku transakcji: <code>TransactionNumber > dt_transakcje.Rows.Count</code></li>
+        <li>W stanie Process: Try-Catch — Catch <code>BusinessRuleException</code> (pomin) i <code>System.Exception</code> (restart)</li>
+        <li>Po kazdej transakcji inkrementuj: <code>TransactionNumber = TransactionNumber + 1</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Rozszerzenie SM - State Raport -->
+  <div class="task-card">
+    <div class="task-title"><span class="bonus-tag">Rozszerzenie</span> State Machine — Dodatkowy State "Raport"</div>
+    <div class="task-topic">Temat: Build Data Table + Write Range + dodawanie nowego State do State Machine</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Dodaj nowy stan <strong>"State - Raport"</strong> miedzy Procesowaniem a Final State</li>
+        <li>W stanie Raport wygeneruj podsumowanie przetworzonych transakcji</li>
+        <li>Zapisz raport do pliku <code>Raport_transakcji.xlsx</code></li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Uzyj <code>Build Data Table</code> z kolumnami: <code>Nr transakcji</code>, <code>Status</code>, <code>Szczegoly</code></li>
+        <li>Wypelnij tabele na podstawie zebranych danych (zliczaj sukcesy/porazki w procesowaniu)</li>
+        <li>Uzyj <code>Write Range</code> do zapisu do <code>Raport_transakcji.xlsx</code></li>
+        <li>Zmodyfikuj Transitions:
+          <ul>
+            <li>Get Transaction: <code>row_TransactionItem Is Nothing</code> &rarr; <strong>State - Raport</strong> (zamiast Final State)</li>
+            <li>State - Raport: (bezwarunkowa) &rarr; <strong>Final State</strong></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="module-header">Modul 11 — REFramework</div>
+
+  <!-- REFramework intro -->
+  <div class="task-card intro">
+    <div class="task-title">Cwiczenie wprowadzajace — REFramework</div>
+    <div class="task-topic">Temat: Omowienie struktury Robotic Enterprise Framework (wspolnie z prowadzacym)</div>
+    <div class="task-body">
+      <h4>Opis cwiczenia</h4>
+      <ol>
+        <li>Zapoznaj sie ze struktura szablonu <strong>REFramework</strong> (Robotic Enterprise Framework)</li>
+        <li>Przeanalizuj pliki w folderach: <code>Framework/</code>, <code>Data/</code>, <code>Tests/</code></li>
+        <li>Omow role poszczegolnych plikow:
+          <table>
+            <tr><th>Plik</th><th>Rola</th></tr>
+            <tr><td><code>Main.xaml</code></td><td>Glowna State Machine (Init, Get Transaction, Process, End Process)</td></tr>
+            <tr><td><code>InitAllSettings.xaml</code></td><td>Wczytuje konfiguracje z Config.xlsx</td></tr>
+            <tr><td><code>InitAllApplications.xaml</code></td><td>Otwiera wymagane aplikacje</td></tr>
+            <tr><td><code>GetTransactionData.xaml</code></td><td>Pobiera kolejna transakcje (z Queue lub pliku)</td></tr>
+            <tr><td><code>Process.xaml</code></td><td>Przetwarza pojedyncza transakcje</td></tr>
+            <tr><td><code>SetTransactionStatus.xaml</code></td><td>Ustawia status transakcji (Success/Business/System)</td></tr>
+            <tr><td><code>CloseAllApplications.xaml</code></td><td>Zamyka aplikacje</td></tr>
+            <tr><td><code>KillAllProcesses.xaml</code></td><td>Awaryjne zamkniecie procesow</td></tr>
+            <tr><td><code>RetryCurrentTransaction.xaml</code></td><td>Logika ponawiania transakcji</td></tr>
+            <tr><td><code>TakeScreenshot.xaml</code></td><td>Screenshot przy bledzie</td></tr>
+            <tr><td><code>Data/Config.xlsx</code></td><td>Konfiguracja: sciezki, nazwy assetow, kolejki, ustawienia</td></tr>
+            <tr><td><code>Data/Input/</code></td><td>Dane wejsciowe</td></tr>
+            <tr><td><code>Data/Output/</code></td><td>Dane wyjsciowe</td></tr>
+            <tr><td><code>Data/Temp/</code></td><td>Pliki tymczasowe</td></tr>
+            <tr><td><code>Tests/</code></td><td>Testy jednostkowe</td></tr>
+          </table>
+        </li>
+      </ol>
+      <h4>Kluczowe pojecia</h4>
+      <ul>
+        <li><strong>Business Rule Exception</strong> — blad danych (np. brak NIP) — transakcja jest pomijana</li>
+        <li><strong>System Exception</strong> — blad techniczny (np. crash aplikacji) — robot restartuje aplikacje i powtarza transakcje</li>
+        <li><strong>Config.xlsx</strong> — centralne miejsce konfiguracji (nie hardcoduj wartosci w workflow!)</li>
+        <li><strong>MaxRetryNumber</strong> — ile razy robot powtorzy transakcje po System Exception</li>
+      </ul>
+      <h4>Config.xlsx — trzy arkusze</h4>
+      <table>
+        <tr><th>Arkusz</th><th>Opis</th><th>Przyklad</th></tr>
+        <tr><td><strong>Settings</strong></td><td>Ustawienia procesu (key-value)</td><td>OrchestratorQueueName, MaxRetryNumber</td></tr>
+        <tr><td><strong>Constants</strong></td><td>Stale wartosci</td><td>URL aplikacji, timeout</td></tr>
+        <tr><td><strong>Assets</strong></td><td>Nazwy assetow z Orchestratora</td><td>CredentialName, LogLevel</td></tr>
+      </table>
+      <div class="hint-box">
+        <strong>Uwaga techniczna:</strong> Config w REFramework jest typu <code>Dictionary(Of String, Object)</code> — dlatego przy odczycie zawsze potrzebny jest <code>.ToString</code>: <code>Config("OrchestratorQueueName").ToString</code>
+      </div>
+      <h4>Alternatywa bez Orchestratora — Windows Credential Manager</h4>
+      <ol>
+        <li>Panel sterowania &rarr; Menedzer poswiadczen &rarr; Poswiadczenia systemu Windows &rarr; Dodaj</li>
+        <li>W UiPath: <code>Get Secure Credential</code> zamiast <code>Get Credential</code>
+          <ul>
+            <li>Target: nazwa poswiadczenia z Credential Manager</li>
+            <li>Output: Username (String), Password (SecureString)</li>
+          </ul>
+        </li>
+      </ol>
+      <div class="hint-box">
+        <strong>Uwaga:</strong> Windows Credential Manager dziala tylko lokalnie. W produkcji zawsze uzywamy Orchestrator Assets.
+      </div>
+    </div>
+  </div>
+
+  <div class="module-header">Modul 12 — Dispatcher + REFramework Performer</div>
+
+  <!-- Dispatcher -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 4a — Dispatcher</div>
+    <div class="task-topic">Temat: Read Range + Bulk Add Queue Items + Orchestrator Queue</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Stworz robota (Dispatcher), ktorego zadaniem bedzie dodanie Queue Items z pliku <code>Transactions.xlsx</code> do Queue o nazwie <code>4a_Dispatcher</code></li>
+        <li>Najpierw stworz Queue w Orchestratorze (folder My Workspace)</li>
+        <li>Dodaj Log Message z informacja o dodanych danych</li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Przed wczytaniem pliku uzyj <code>Kill Process</code> (excel) — aby plik nie byl zablokowany</li>
+        <li>Wczytaj dane przez <code>Read Range Workbook</code></li>
+        <li>Uzyj <code>Bulk Add Queue Items</code> z odpowiednia nazwa Queue i FolderPath</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- REFramework Performer -->
+  <div class="task-card">
+    <div class="task-title">Zadanie 4b — REFramework Performer</div>
+    <div class="task-topic">Temat: REFramework + Get Transaction Item + Process.xaml + obsluga wyjatkow</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Stworz robota opartego na szablonie <strong>REFramework</strong>, ktory bedzie <strong>Performerem</strong> dla kolejki z zadania 4a</li>
+        <li>Robot ma:
+          <ul>
+            <li>Pobierac transakcje z kolejki <code>4a_Dispatcher</code></li>
+            <li>Logowac sie do aplikacji Robotivity (dane z Orchestrator Assets)</li>
+            <li>Wprowadzac dane z transakcji (CashIn, OnUsCheck, NotOnUsCheck) do formularza</li>
+            <li>Obslugiwac <strong>Business Exception</strong> (dane nie sa liczbowe — pomin transakcje)</li>
+            <li>Obslugiwac <strong>System Exception</strong> (blad aplikacji — restart i powtorz)</li>
+          </ul>
+        </li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li>Uzyj szablonu REFramework z UiPath (File &rarr; New &rarr; REFramework)</li>
+        <li>Skonfiguruj <code>Config.xlsx</code>: nazwa kolejki, sciezka do aplikacji, dane logowania</li>
+        <li>W <code>InitAllApplications.xaml</code>: otworz Robotivity i zaloguj</li>
+        <li>W <code>GetTransactionData.xaml</code>: <code>Get Transaction Item</code> z kolejki</li>
+        <li>W <code>Process.xaml</code>: wpisz dane z transakcji do formularza i kliknij Accept</li>
+        <li>W <code>SetTransactionStatus.xaml</code>: ustaw status na Successful lub Failed</li>
+        <li>W <code>CloseAllApplications.xaml</code>: zamknij Robotivity</li>
+        <li>W <code>KillAllProcesses.xaml</code>: <code>Kill Process</code> robotivity</li>
+      </ul>
+      <div class="hint-box">
+        <strong>Klucz:</strong> REFramework to gotowa State Machine z obsluga bledow — nie musisz budowac jej od zera. Skup sie na dostosowaniu plikow Framework/ do swojego procesu.
+      </div>
+    </div>
+  </div>
+
+  <div class="module-header">Zadania bonusowe (jesli zostanie czas)</div>
+
+  <!-- Bonus - Dashboard transakcji -->
+  <div class="task-card">
+    <div class="task-title"><span class="bonus-tag">Bonus</span> Dashboard transakcji</div>
+    <div class="task-topic">Temat: Build Data Table + Add Data Row + Write Range + zliczanie statystyk</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Po przetworzeniu wszystkich transakcji (Performer), stworz raport z podsumowaniem: ile <strong>Successful</strong>, ile <strong>Failed (Business)</strong></li>
+        <li>Na poczatku procesu: <code>int_successful = 0</code>, <code>int_failed_business = 0</code></li>
+        <li>Po kazdej transakcji inkrementuj odpowiedni licznik</li>
+        <li>Na koncu: <code>Build Data Table</code> (kolumny: Status, Liczba) + <code>Add Data Row</code> + <code>Write Range</code> do <code>Dashboard_transakcji.xlsx</code></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Bonus - Logowanie wynikow do Excela -->
+  <div class="task-card">
+    <div class="task-title"><span class="bonus-tag">Bonus</span> Logowanie wynikow do Excela (REFramework)</div>
+    <div class="task-topic">Temat: SetTransactionStatus.xaml + Append Range + modyfikacja plikow Framework</div>
+    <div class="task-body">
+      <h4>Opis zadania</h4>
+      <ol>
+        <li>Zmodyfikuj <code>SetTransactionStatus.xaml</code> — po ustawieniu statusu zapisz wynik do pliku Excel</li>
+        <li>Loguj: <strong>Reference</strong>, <strong>Status</strong>, <strong>Timestamp</strong> do <code>Data/Output/TransactionLog.xlsx</code></li>
+      </ol>
+      <h4>Wskazowki</h4>
+      <ul>
+        <li><code>str_status = If(in_BusinessException Is Nothing, "Successful", "Failed: " + in_BusinessException.Message)</code></li>
+        <li><code>str_reference = If(in_TransactionItem IsNot Nothing, in_TransactionItem.Reference, "N/A")</code></li>
+        <li>Uzyj <code>Append Range</code> (dopisuje bez nadpisywania) zamiast <code>Write Range</code></li>
+        <li>Wiersz: <code>{str_reference, str_status, Now.ToString("dd-MM-yyyy HH:mm:ss")}</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <img src="logo.png" alt="Robotivity" style="height:36px; vertical-align:middle; margin-bottom:6px;"><br>
+    Szkolenie przygotowane przez <strong>Robotivity&reg;</strong> — Autoryzowany Partner UiPath<br>
+    info@robotivity.pl &nbsp;&middot;&nbsp; www.Robotivity.pl &nbsp;&middot;&nbsp; tel.: +48 690 020 576
+  </div>
+
+</div>
+</body>
+</html>
